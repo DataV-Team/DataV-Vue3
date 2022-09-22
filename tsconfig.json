@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "jsx": "preserve"
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    "esModuleInterop": true
   },
   "include": ["./**/*.*"],
-  "exclude": ["node_modules"],
-  "esModuleInterop": true,
-  "allowSyntheticDefaultImports": true
+  "exclude": ["node_modules"]
 }

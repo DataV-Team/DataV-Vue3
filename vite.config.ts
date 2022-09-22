@@ -1,7 +1,13 @@
-import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { defineConfig } from 'vite';
 
 // eslint-disable-next-line
 export default defineConfig({
-  plugins: [vueJsx()],
+  plugins: [
+    vue({
+      reactivityTransform: true,
+    }),
+    vueJsx(),
+  ],
 });

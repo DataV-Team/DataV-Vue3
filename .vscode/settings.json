@@ -1,4 +1,6 @@
 {
+  "files.eol": "\n",
+  "cSpell.words": ["datav", "polyline"],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "typescript.tsdk": "./node_modules/typescript/lib",
@@ -8,6 +10,9 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "files.eol": "\n",
-  "cSpell.words": ["datav"]
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"]
 }
