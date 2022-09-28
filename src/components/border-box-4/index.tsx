@@ -9,7 +9,7 @@ import './index.less';
 
 const defaultColor = ['red', 'rgba(0,0,255,0.8)'];
 
-const BorderBox4Props = () => ({
+const borderBox4Props = () => ({
   ...createBorderBoxCommonProps(),
   reverse: {
     type: Boolean,
@@ -17,13 +17,13 @@ const BorderBox4Props = () => ({
   },
 });
 
-export type BorderBox4Props = ReturnType<typeof BorderBox4Props>;
+export type BorderBox4Props = ReturnType<typeof borderBox4Props>;
 
 export const BorderBox4 = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'BorderBox4',
 
-    props: BorderBox4Props(),
+    props: borderBox4Props(),
 
     setup(props, { slots }) {
       const { domRef, domSize } = useResize();
@@ -72,7 +72,3 @@ export const BorderBox4 = /*#__PURE__*/ withInstall(
     },
   })
 );
-
-export const Test = () => {
-  return <BorderBox4 style={{ width: '100%', height: '300px' }}>123</BorderBox4>;
-};
