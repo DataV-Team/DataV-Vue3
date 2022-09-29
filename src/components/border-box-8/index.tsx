@@ -1,4 +1,4 @@
-import { computed, defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 
 import { useResize } from '../../hooks/useResize';
 import { useUuid } from '../../hooks/useUuid';
@@ -42,11 +42,9 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
         const gradient = `border-box-8-gradient-${uuid.id}`;
         const mask = `border-box-8-mask-${uuid.id}`;
 
-        const pathD = computed(() =>
-          reverse
-            ? `M 2.5, 2.5 L 2.5, ${height - 2.5} L ${width - 2.5}, ${height - 2.5} L ${width - 2.5}, 2.5 L 2.5, 2.5`
-            : `M2.5, 2.5 L${width - 2.5}, 2.5 L${width - 2.5}, ${height - 2.5} L2.5, ${height - 2.5} L2.5, 2.5`
-        ).value;
+        const pathD = reverse
+          ? `M 2.5, 2.5 L 2.5, ${height - 2.5} L ${width - 2.5}, ${height - 2.5} L ${width - 2.5}, 2.5 L 2.5, 2.5`
+          : `M2.5, 2.5 L${width - 2.5}, 2.5 L${width - 2.5}, ${height - 2.5} L2.5, ${height - 2.5} L2.5, 2.5`;
 
         return (
           <div class="dv-border-box-8" ref={domRef}>
@@ -81,7 +79,3 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
     },
   })
 );
-
-export const Test = () => {
-  return <BorderBox8 style={{ width: '100%', height: '300px' }}>123</BorderBox8>;
-};
