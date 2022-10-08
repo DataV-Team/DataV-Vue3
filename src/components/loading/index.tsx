@@ -3,7 +3,7 @@ import { defineComponent } from 'vue';
 import './index.less';
 import { withInstall } from '../../utils/common';
 
-export const DvLoading = withInstall(
+export const DvLoading = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'DvLoading',
     setup(_, { slots }) {
