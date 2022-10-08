@@ -5,14 +5,17 @@
  * @LastEditTime: 2022-12-07 11:35:08
  * @LastEditors: @Xin (834529118@qq.com)
  */
+import { sum } from 'lodash-es';
 import { defineComponent } from 'vue';
+
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor, calcTwoPointDistance } from '../../utils/common';
 import { createDecoration5Props } from '../../utils/decoration';
+
 export type { Decoration5Props } from '../../utils/decoration';
-import { sum } from 'lodash-es';
 
 import './index.less';
+
 const defaultColor = ['#3f96a5', '#3f96a5'];
 
 /**

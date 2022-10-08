@@ -6,10 +6,12 @@
  * @LastEditors: @Xin (834529118@qq.com)
  */
 import { defineComponent } from 'vue';
-import type { CSSProperties } from 'vue';
+
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor } from '../../utils/common';
 import { createDecoration4Props } from '../../utils/decoration';
+
+import type { CSSProperties } from 'vue';
 export type { Decoration4Props } from '../../utils/decoration';
 import './index.less';
 

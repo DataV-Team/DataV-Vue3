@@ -6,6 +6,7 @@
  * @LastEditors: @Xin (834529118@qq.com)
  */
 import { defineComponent } from 'vue';
+
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor } from '../../utils/common';
 import { createDecoration2Props } from '../../utils/decoration';
