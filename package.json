@@ -8,7 +8,9 @@
     "lint": "eslint --fix --ext .ts,.tsx src",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "prepare": "husky install",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [
     "datav"
@@ -34,7 +36,8 @@
     "prettier": "^2.7.1",
     "typescript": "^4.8.3",
     "vite": "3.0.7",
-    "vue": "^3.2.39"
+    "vue": "^3.2.39",
+    "vuepress": "2.0.0-beta.53"
   },
   "dependencies": {
     "classnames": "^2.3.2",
