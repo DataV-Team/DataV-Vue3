@@ -5,6 +5,6 @@
     "jsx": "preserve",
     "esModuleInterop": true
   },
-  "include": ["./**/*.*"],
-  "exclude": ["node_modules"]
+  "include": ["./**/*.*", "./.dev/*.*"],
+  "exclude": ["node_modules", "scripts/dev/dev-env"]
 }
