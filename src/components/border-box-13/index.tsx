@@ -6,6 +6,8 @@ import { withInstall } from '../../utils/common';
 
 import './index.less';
 
+const defaultColor = ['#6586ec', '#2cf7fe'];
+
 export const BorderBox13 = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'BorderBox13',
@@ -13,7 +15,6 @@ export const BorderBox13 = /*#__PURE__*/ withInstall(
     props: createBorderBoxCommonProps(),
 
     setup(props, { slots }) {
-      const defaultColor = ['#6586ec', '#2cf7fe'];
       const { domRef, domSize } = useResize();
 
       return () => {
@@ -53,7 +54,3 @@ export const BorderBox13 = /*#__PURE__*/ withInstall(
     },
   })
 );
-
-export const Test = () => {
-  return <BorderBox13 style={{ width: '100%', height: '300px' }}>123</BorderBox13>;
-};
