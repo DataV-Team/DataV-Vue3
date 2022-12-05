@@ -8,6 +8,8 @@ import { withInstall } from '../../utils/common';
 
 import './index.less';
 
+const defaultColor = ['#2e6099', '#7ce7fd'];
+
 export const BorderBox12 = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'BorderBox12',
@@ -15,7 +17,6 @@ export const BorderBox12 = /*#__PURE__*/ withInstall(
     props: createBorderBoxCommonProps(),
 
     setup(props, { slots }) {
-      const defaultColor = ['#2e6099', '#7ce7fd'];
       const { domRef, domSize } = useResize();
       const uuid = useUuid();
 
