@@ -5,7 +5,7 @@ import { withInstall } from '../../utils/common';
 
 export const DvLoading = /*#__PURE__*/ withInstall(
   defineComponent({
-    name: 'DvLoading',
+    name: 'Loading',
     setup(_, { slots }) {
       return () => {
         return (
@@ -46,7 +46,3 @@ export const DvLoading = /*#__PURE__*/ withInstall(
     },
   })
 );
-
-export const Test = () => {
-  return <DvLoading style={{ width: '100%', height: '300px' }}>123</DvLoading>;
-};
