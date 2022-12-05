@@ -5,6 +5,8 @@
  * @LastEditTime: 2022-12-07 10:45:24
  * @LastEditors: @Xin (834529118@qq.com)
  */
+export { Loading } from './components/loading';
+
 export { BorderBox1 } from './components/border-box-1';
 export { BorderBox2 } from './components/border-box-2';
 export { BorderBox3 } from './components/border-box-3';
