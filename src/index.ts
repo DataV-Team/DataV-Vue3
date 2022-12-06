@@ -6,3 +6,4 @@ export { BorderBox5 } from './components/border-box-5';
 export { BorderBox6 } from './components/border-box-6';
 export { BorderBox8 } from './components/border-box-8';
 export { BorderBox9 } from './components/border-box-9';
+export { Decoration1 } from './components/decoration-1';
