@@ -2,13 +2,12 @@
  * @Description: 请输入当前文件描述
  * @Author: @Xin (834529118@qq.com)
  * @Date: 2022-12-06 17:17:00
- * @LastEditTime: 2022-12-07 11:16:11
+ * @LastEditTime: 2022-12-07 11:35:08
  * @LastEditors: @Xin (834529118@qq.com)
  */
 import { defineComponent } from 'vue';
-import type { CSSProperties } from 'vue';
 import { useResize } from '../../hooks/useResize';
-import { withInstall, mergeColor } from '../../utils/common';
+import { withInstall, mergeColor, calcTwoPointDistance } from '../../utils/common';
 import { createDecoration5Props } from '../../utils/decoration';
 export type { Decoration5Props } from '../../utils/decoration';
 import { sum } from 'lodash-es';
@@ -16,14 +15,13 @@ import { sum } from 'lodash-es';
 import './index.less';
 const defaultColor = ['#3f96a5', '#3f96a5'];
 
-const getTwoPointDistance = (pointOne: number[], pointTwo: number[]) => {
-  var minusX = Math.abs(pointOne[0] - pointTwo[0]);
-  var minusY = Math.abs(pointOne[1] - pointTwo[1]);
-  return Math.sqrt(minusX * minusX + minusY * minusY);
-};
-
-const getPolylines = (points: Array<Array<number>>) =>
-  new Array(points.length - 1).fill(0).map((_, i) => getTwoPointDistance(points[i], points[i + 1]));
+/**
+ * @description: 获取多个点，每个点之间的距离
+ * @param {Array<Array<number>>} points
+ * @return {Array}
+ */
+const getPointDistances = (points: Array<Array<number>>) =>
+  new Array(points.length - 1).fill(0).map((_, i) => calcTwoPointDistance(points[i], points[i + 1]));
 
 export const Decoration5 = withInstall(
   defineComponent({
@@ -53,11 +51,9 @@ export const Decoration5 = withInstall(
           [width * 0.7, height * 0.8],
         ];
 
-        getPolylines(line1Points);
-
         return {
-          line1Sum: sum(getPolylines(line1Points)),
-          line2Sum: sum(getPolylines(line2Points)),
+          line1Sum: sum(getPointDistances(line1Points)),
+          line2Sum: sum(getPointDistances(line2Points)),
           line1Point: line1Points.map((point) => point.join(',')).join(' '),
           line2Point: line2Points.map((point) => point.join(',')).join(' '),
         };
