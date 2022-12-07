@@ -2,7 +2,7 @@
  * @Description: 请输入当前文件描述
  * @Author: @Xin (834529118@qq.com)
  * @Date: 2022-12-06 11:33:03
- * @LastEditTime: 2022-12-06 14:14:46
+ * @LastEditTime: 2022-12-06 17:23:38
  * @LastEditors: @Xin (834529118@qq.com)
  */
 import type { App, Plugin } from 'vue';
