@@ -2,7 +2,7 @@
  * @Description: 请输入当前文件描述
  * @Author: @Xin (834529118@qq.com)
  * @Date: 2022-12-06 16:24:25
- * @LastEditTime: 2022-12-06 16:55:43
+ * @LastEditTime: 2022-12-06 17:12:07
  * @LastEditors: @Xin (834529118@qq.com)
  */
 import { defineComponent } from 'vue';
@@ -15,7 +15,7 @@ export type Decoration3Props = Decoration1Props;
 
 import './index.less';
 
-const defaultColor = ['#3faacb', '#fff'];
+const defaultColor = ['#7acaec', 'transparent'];
 
 const defaultSvgW = 300;
 const defaultSvgH = 35;
