@@ -1,7 +1,9 @@
 node_modules
 
 .dev
-dist
+cjs
+es
+umd
 
 docs/.vuepress/.cache
 docs/.vuepress/.temp
