@@ -143,7 +143,3 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
     },
   })
 );
-
-export const Test = () => {
-  return <BorderBox9 style={{ width: '100%', height: '300px' }}>123</BorderBox9>;
-};
