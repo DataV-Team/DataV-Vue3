@@ -3,7 +3,8 @@
     "baseUrl": "./",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
   "include": ["./**/*.*", "./.dev/*.*"],
   "exclude": ["node_modules", "scripts/dev/dev-env"]
