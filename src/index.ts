@@ -6,3 +6,8 @@ export { BorderBox5 } from './components/border-box-5';
 export { BorderBox6 } from './components/border-box-6';
 export { BorderBox8 } from './components/border-box-8';
 export { BorderBox9 } from './components/border-box-9';
+export { Decoration1 } from './components/decoration-1';
+export { Decoration2 } from './components/decoration-2';
+export { Decoration3 } from './components/decoration-3';
+export { Decoration4 } from './components/decoration-4';
+export { Decoration5 } from './components/decoration-5';

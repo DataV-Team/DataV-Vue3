@@ -1,11 +1,11 @@
 import { merge } from 'lodash-es';
 
-import type { PropType } from 'vue';
+import { definePropType } from './common';
 
 export function createBorderBoxCommonProps() {
   return {
     color: {
-      type: Array as unknown as PropType<[string, string]>,
+      type: definePropType<[string, string]>(Array),
       default: () => [],
     },
     backgroundColor: {

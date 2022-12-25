@@ -1,0 +1,90 @@
+import { defineComponent } from 'vue';
+
+import { useResize } from '../../hooks/useResize';
+import { withInstall, mergeColor } from '../../utils/common';
+import { createColorProps, createDurationProps, createReverseProps } from '../../utils/decoration';
+
+import './index.less';
+
+const defaultColor = ['#3faacb', '#fff'];
+
+function createDecoration2Props() {
+  return {
+    ...createColorProps(),
+    ...createReverseProps(),
+    ...createDurationProps(6),
+  };
+}
+
+function calcSVGData(reverse, width, height) {
+  if (reverse) {
+    return {
+      width: 1,
+      height,
+      x: width / 2,
+      y: 0,
+    };
+  } else {
+    return {
+      width,
+      height: 1,
+      x: 0,
+      y: height / 2,
+    };
+  }
+}
+
+export type Decoration2Props = ReturnType<typeof createDecoration2Props>;
+
+export const Decoration2 = withInstall(
+  defineComponent({
+    name: 'Decoration2',
+
+    props: createDecoration2Props(),
+
+    setup(props) {
+      const { domRef, domSize } = useResize();
+
+      return () => {
+        const { width, height } = domSize;
+        const { color, reverse, duration } = props;
+
+        const mergedColor = mergeColor(defaultColor, color);
+
+        const { x, y, width: svgWidth, height: svgHeight } = calcSVGData(reverse, width, height);
+
+        return (
+          <div class="dv-decoration-2" ref={domRef}>
+            <svg width={width} height={height}>
+              <rect x={x} y={y} width={svgWidth} height={svgHeight} fill={mergedColor[0]}>
+                <animate
+                  attributeName={reverse ? 'height' : 'width'}
+                  from="0"
+                  to={reverse ? height : width}
+                  dur={`${duration}s`}
+                  calcMode="spline"
+                  keyTimes="0;1"
+                  keySplines=".42,0,.58,1"
+                  repeatCount="indefinite"
+                />
+              </rect>
+
+              <rect x={x} y={y} width="1" height="1" fill={mergedColor[1]}>
+                <animate
+                  attributeName={reverse ? 'y' : 'x'}
+                  from="0"
+                  to={reverse ? height : width}
+                  dur={`${duration}s`}
+                  calcMode="spline"
+                  keyTimes="0;1"
+                  keySplines="0.42,0,0.58,1"
+                  repeatCount="indefinite"
+                />
+              </rect>
+            </svg>
+          </div>
+        );
+      };
+    },
+  })
+);

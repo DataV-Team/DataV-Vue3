@@ -43,8 +43,12 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
         const mask = `border-box-8-mask-${uuid.id}`;
 
         const pathD = reverse
-          ? `M 2.5, 2.5 L 2.5, ${height - 2.5} L ${width - 2.5}, ${height - 2.5} L ${width - 2.5}, 2.5 L 2.5, 2.5`
-          : `M2.5, 2.5 L${width - 2.5}, 2.5 L${width - 2.5}, ${height - 2.5} L2.5, ${height - 2.5} L2.5, 2.5`;
+          ? `M 2.5, 2.5 L 2.5, ${height - 2.5} L ${width - 2.5}, ${height - 2.5} L ${
+              width - 2.5
+            }, 2.5 L 2.5, 2.5`
+          : `M2.5, 2.5 L${width - 2.5}, 2.5 L${width - 2.5}, ${height - 2.5} L2.5, ${
+              height - 2.5
+            } L2.5, 2.5`;
 
         return (
           <div class="dv-border-box-8" ref={domRef}>
@@ -58,17 +62,36 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
 
                 <mask id={mask}>
                   <circle cx="0" cy="0" r="150" fill={`url(#${gradient})`}>
-                    <animateMotion dur={`${dur}s`} path={pathD} rotate="auto" repeatCount="indefinite" />
+                    <animateMotion
+                      dur={`${dur}s`}
+                      path={pathD}
+                      rotate="auto"
+                      repeatCount="indefinite"
+                    />
                   </circle>
                 </mask>
               </defs>
 
-              <polygon fill={backgroundColor} points={`5, 5 ${width - 5}, 5 ${width - 5} ${height - 5} 5, ${height - 5}`} />
+              <polygon
+                fill={backgroundColor}
+                points={`5, 5 ${width - 5}, 5 ${width - 5} ${height - 5} 5, ${height - 5}`}
+              />
 
               <use stroke={mergedColor[0]} stroke-width="1" xlinkHref={`#${path}`} />
 
-              <use stroke={mergedColor[1]} stroke-width="3" xlinkHref={`#${path}`} mask={`url(#${mask})`}>
-                <animate attributeName="stroke-dasharray" from={`0, ${length}`} to={`${length}, 0`} dur={`${dur}s`} repeatCount="indefinite" />
+              <use
+                stroke={mergedColor[1]}
+                stroke-width="3"
+                xlinkHref={`#${path}`}
+                mask={`url(#${mask})`}
+              >
+                <animate
+                  attributeName="stroke-dasharray"
+                  from={`0, ${length}`}
+                  to={`${length}, 0`}
+                  dur={`${dur}s`}
+                  repeatCount="indefinite"
+                />
               </use>
             </svg>
 

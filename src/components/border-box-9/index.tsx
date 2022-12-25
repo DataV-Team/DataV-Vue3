@@ -36,9 +36,21 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
             <svg class="dv-border-svg-container" width={width} height={height}>
               <defs>
                 <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <animate attributeName="x1" values="0%;100%;0%" dur="10s" begin="0s" repeatCount="indefinite" />
+                  <animate
+                    attributeName="x1"
+                    values="0%;100%;0%"
+                    dur="10s"
+                    begin="0s"
+                    repeatCount="indefinite"
+                  />
 
-                  <animate attributeName="x2" values="100%;0%;100%" dur="10s" begin="0s" repeatCount="indefinite" />
+                  <animate
+                    attributeName="x2"
+                    values="100%;0%;100%"
+                    dur="10s"
+                    begin="0s"
+                    repeatCount="indefinite"
+                  />
 
                   <stop offset="0%" stop-color={mergedColor[0]}>
                     <animate
@@ -61,7 +73,12 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
                 </linearGradient>
 
                 <mask id={maskId}>
-                  <polyline stroke="#fff" stroke-width="3" fill="transparent" points={`8, ${height * 0.4} 8, 3, ${width * 0.4 + 7}, 3`} />
+                  <polyline
+                    stroke="#fff"
+                    stroke-width="3"
+                    fill="transparent"
+                    points={`8, ${height * 0.4} 8, 3, ${width * 0.4 + 7}, 3`}
+                  />
                   <polyline
                     fill="#fff"
                     points={`
@@ -109,14 +126,18 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
                     stroke="#fff"
                     stroke-width="3"
                     fill="transparent"
-                    points={`${width * 0.35}, ${height - 3} ${width - 3}, ${height - 3} ${width - 3}, ${height * 0.35}`}
+                    points={`${width * 0.35}, ${height - 3} ${width - 3}, ${height - 3} ${
+                      width - 3
+                    }, ${height * 0.35}`}
                   />
                   <polyline
                     fill="#fff"
                     points={`
-                      ${width * 0.92}, ${height - 3} ${width - 3}, ${height - 3} ${width - 3}, ${height * 0.8}
-                      ${width - 9}, ${height * 0.8 + 7} ${width - 9}, ${height - 9} ${width * 0.92 + 7}, ${height - 9}
-                    `}
+                      ${width * 0.92}, ${height - 3} ${width - 3}, ${height - 3} ${width - 3}, ${
+                      height * 0.8
+                    } ${width - 9}, ${height * 0.8 + 7} ${width - 9}, ${height - 9} ${
+                      width * 0.92 + 7
+                    }, ${height - 9}`}
                   />
                 </mask>
               </defs>
@@ -126,14 +147,27 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
                 points={`
                   15, 9 ${width * 0.1 + 1}, 9 ${width * 0.1 + 4}, 6 ${width * 0.52 + 2}, 6
                   ${width * 0.52 + 6}, 10 ${width * 0.58 - 7}, 10 ${width * 0.58 - 2}, 6
-                  ${width * 0.9 + 2}, 6 ${width * 0.9 + 6}, 10 ${width - 10}, 10 ${width - 10}, ${height * 0.1 - 6}
-                  ${width - 6}, ${height * 0.1 - 1} ${width - 6}, ${height * 0.8 + 1} ${width - 10}, ${height * 0.8 + 6}
-                  ${width - 10}, ${height - 10} ${width * 0.92 + 7}, ${height - 10}  ${width * 0.92 + 2}, ${height - 6}
+                  ${width * 0.9 + 2}, 6 ${width * 0.9 + 6}, 10 ${width - 10}, 10 ${width - 10}, ${
+                  height * 0.1 - 6
+                }
+                  ${width - 6}, ${height * 0.1 - 1} ${width - 6}, ${height * 0.8 + 1} ${
+                  width - 10
+                }, ${height * 0.8 + 6}
+                  ${width - 10}, ${height - 10} ${width * 0.92 + 7}, ${height - 10}  ${
+                  width * 0.92 + 2
+                }, ${height - 6}
                   11, ${height - 6} 11, ${height * 0.15 - 2} 15, ${height * 0.15 - 7}
                 `}
               />
 
-              <rect x="0" y="0" width={width} height={height} fill={`url(#${gradientId})`} mask={`url(#${maskId})`} />
+              <rect
+                x="0"
+                y="0"
+                width={width}
+                height={height}
+                fill={`url(#${gradientId})`}
+                mask={`url(#${maskId})`}
+              />
             </svg>
 
             <div class="border-box-content">{slots.default?.()}</div>
@@ -143,7 +177,3 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
     },
   })
 );
-
-export const Test = () => {
-  return <BorderBox9 style={{ width: '100%', height: '300px' }}>123</BorderBox9>;
-};
