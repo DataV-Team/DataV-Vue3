@@ -5,9 +5,10 @@
  * @LastEditTime: 2022-12-07 11:34:58
  * @LastEditors: @Xin (834529118@qq.com)
  */
+import { merge } from 'lodash-es';
+
 import type { App, Plugin } from 'vue';
 import type { PropType } from 'vue';
-import { merge } from 'lodash-es';
 
 export function withInstall<T>(comp: T) {
   const c = comp as any;
@@ -27,8 +28,8 @@ export const definePropType = <T>(val: any): PropType<T> => val;
  * @return {Number}
  */
 export const calcTwoPointDistance = (pointOne: number[], pointTwo: number[]) => {
-  var minusX = Math.abs(pointOne[0] - pointTwo[0]);
-  var minusY = Math.abs(pointOne[1] - pointTwo[1]);
+  const minusX = Math.abs(pointOne[0] - pointTwo[0]);
+  const minusY = Math.abs(pointOne[1] - pointTwo[1]);
   return Math.sqrt(Math.pow(minusX, 2) + Math.pow(minusY, 2));
 };
 
