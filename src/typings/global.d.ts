@@ -10,4 +10,6 @@ declare global {
       animateMotion: AnimateMotion;
     }
   }
+
+  export const __STYLED_PLACEHOLDER__: string;
 }
