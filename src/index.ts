@@ -17,4 +17,7 @@ export * from './components/decoration-2';
 export * from './components/decoration-3';
 export * from './components/decoration-4';
 export * from './components/decoration-5';
+export * from './components/decoration-6';
+export * from './components/decoration-7';
+export * from './components/decoration-8';
 export * from './components/loading';
