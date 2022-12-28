@@ -4,10 +4,9 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor, calcTwoPointDistance } from '../../utils/common';
 import { createColorProps, createDurationProps } from '../../utils/decoration';
+import { styled } from '../../utils/styled';
 
 import type { Point } from '../../types/common';
-
-import './index.less';
 
 const defaultColor = ['#3f96a5', '#3f96a5'];
 
@@ -56,9 +55,14 @@ function calcSVGData(width: number, height: number) {
   };
 }
 
+const DecorationContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`('decoration-5');
+
 export type Decoration5Props = ReturnType<typeof createDecoration5Props>;
 
-export const Decoration5 = withInstall(
+export const Decoration5 = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'Decoration5',
 
@@ -76,7 +80,7 @@ export const Decoration5 = withInstall(
         const { line1Sum, line2Sum, line1Point, line2Point } = calcSVGData(width, height);
 
         return (
-          <div class="dv-decoration-5" ref={domRef}>
+          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
             <svg width={width} height={height}>
               <polyline
                 fill="transparent"
@@ -118,7 +122,7 @@ export const Decoration5 = withInstall(
                 />
               </polyline>
             </svg>
-          </div>
+          </DecorationContainer>
         );
       };
     },

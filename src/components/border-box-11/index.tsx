@@ -5,10 +5,23 @@ import { useResize } from '../../hooks/useResize';
 import { useUuid } from '../../hooks/useUuid';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-
-import './index.less';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 const defaultColor = ['#8aaafb', '#1f33a2'];
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+
+  & > polyline {
+    fill: none;
+    stroke-width: 1;
+  }
+`('border-svg-container');
 
 const createBorderBox11Props = () => ({
   ...createBorderBoxCommonProps(),
@@ -41,8 +54,11 @@ export const BorderBox11 = /*#__PURE__*/ withInstall(
         const filterId = `border-box-11-filterId-${uuid}`;
 
         return (
-          <div class="dv-border-box-11" ref={domRef}>
-            <svg class="dv-border-svg-container" width={width} height={height}>
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-11')}
+            ref={(ref) => (domRef.value = ref.$el)}
+          >
+            <BorderSvgContainer width={width} height={height}>
               <defs>
                 <filter id={filterId} height="150%" width="150%" x="-25%" y="-25%">
                   <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="thicken" />
@@ -263,10 +279,12 @@ export const BorderBox11 = /*#__PURE__*/ withInstall(
                 }
                 `}
               />
-            </svg>
+            </BorderSvgContainer>
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },

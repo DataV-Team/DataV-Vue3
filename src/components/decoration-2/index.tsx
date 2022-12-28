@@ -3,8 +3,7 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor } from '../../utils/common';
 import { createColorProps, createDurationProps, createReverseProps } from '../../utils/decoration';
-
-import './index.less';
+import { styled } from '../../utils/styled';
 
 const defaultColor = ['#3faacb', '#fff'];
 
@@ -34,9 +33,17 @@ function calcSVGData(reverse, width, height) {
   }
 }
 
+const DecorationContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`('decoration-2');
+
 export type Decoration2Props = ReturnType<typeof createDecoration2Props>;
 
-export const Decoration2 = withInstall(
+export const Decoration2 = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'Decoration2',
 
@@ -54,7 +61,7 @@ export const Decoration2 = withInstall(
         const { x, y, width: svgWidth, height: svgHeight } = calcSVGData(reverse, width, height);
 
         return (
-          <div class="dv-decoration-2" ref={domRef}>
+          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
             <svg width={width} height={height}>
               <rect x={x} y={y} width={svgWidth} height={svgHeight} fill={mergedColor[0]}>
                 <animate
@@ -82,7 +89,7 @@ export const Decoration2 = withInstall(
                 />
               </rect>
             </svg>
-          </div>
+          </DecorationContainer>
         );
       };
     },

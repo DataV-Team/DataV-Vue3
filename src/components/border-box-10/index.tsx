@@ -3,14 +3,35 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 import type { BorderBoxCommonProps } from '../../utils/borderBox';
-
-import './index.less';
 
 const defaultColor = ['#1d48c4', '#d3e1f8'];
 
 const border = ['left-top', 'right-top', 'left-bottom', 'right-bottom'] as const;
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  display: block;
+
+  &.right-top {
+    right: 0px;
+    transform: rotateY(180deg);
+  }
+
+  &.left-bottom {
+    bottom: 0px;
+    transform: rotateX(180deg);
+  }
+
+  &.right-bottom {
+    right: 0px;
+    bottom: 0px;
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+`('border-svg-container');
 
 export type BorderBox10Props = BorderBoxCommonProps;
 
@@ -29,12 +50,12 @@ export const BorderBox10 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <div
-            ref={domRef}
-            class="dv-border-box-10"
-            style={{ 'box-shadow': `inset 0 0 25px 3px ${mergedColor[0]}` }}
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-10')}
+            ref={(ref) => (domRef.value = ref.$el)}
+            style={{ boxShadow: `inset 0 0 25px 3px ${mergedColor[0]}` }}
           >
-            <svg class="dv-border-svg-container" width={width} height={height}>
+            <BorderSvgContainer width={width} height={height}>
               <polygon
                 fill={backgroundColor}
                 points={`
@@ -42,26 +63,23 @@ export const BorderBox10 = /*#__PURE__*/ withInstall(
                   4, ${height} 0, ${height - 4} 0, 4
                 `}
               />
-            </svg>
+            </BorderSvgContainer>
 
             {border.map((item) => {
               return (
-                <svg
-                  width="150px"
-                  height="150px"
-                  key={item}
-                  class={`${item} dv-border-svg-container`}
-                >
+                <BorderSvgContainer width="150px" height="150px" key={item} class={item}>
                   <polygon
                     fill={mergedColor[1]}
                     points="40, 0 5, 0 0, 5 0, 16 3, 19 3, 7 7, 3 35, 3"
                   />
-                </svg>
+                </BorderSvgContainer>
               );
             })}
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },

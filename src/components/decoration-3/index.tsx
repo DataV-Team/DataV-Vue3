@@ -3,8 +3,7 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor } from '../../utils/common';
 import { createColorProps } from '../../utils/decoration';
-
-import './index.less';
+import { styled } from '../../utils/styled';
 
 function calcPointsPosition({
   width,
@@ -45,9 +44,18 @@ const pointPositions = calcPointsPosition({
   rowCount,
 });
 
+const DecorationContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  svg {
+    transform-origin: left top;
+  }
+`('decoration-3');
+
 export type Decoration3Props = ReturnType<typeof createColorProps>;
 
-export const Decoration3 = withInstall(
+export const Decoration3 = /*#__PURE__*/ withInstall(
   defineComponent({
     name: 'Decoration3',
 
@@ -63,7 +71,7 @@ export const Decoration3 = withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <div class="dv-decoration-3" ref={domRef}>
+          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
             <svg
               width={defaultSvgWidth}
               height={defaultSvgHeight}
@@ -97,7 +105,7 @@ export const Decoration3 = withInstall(
                 ) : null;
               })}
             </svg>
-          </div>
+          </DecorationContainer>
         );
       };
     },

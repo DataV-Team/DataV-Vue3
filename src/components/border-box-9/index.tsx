@@ -4,12 +4,20 @@ import { useResize } from '../../hooks/useResize';
 import { useUuid } from '../../hooks/useUuid';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 import type { BorderBoxCommonProps } from '../../utils/borderBox';
 
-import './index.less';
-
 const defaultColor = ['#11eefd', '#0078d2'];
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+`('border-svg-container');
 
 export type BorderBox9Props = BorderBoxCommonProps;
 
@@ -32,8 +40,11 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
         const maskId = `border-box-9-mask-${uuid.id}`;
 
         return (
-          <div class="dv-border-box-9" ref={domRef}>
-            <svg class="dv-border-svg-container" width={width} height={height}>
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-9')}
+            ref={(ref) => (domRef.value = ref.$el)}
+          >
+            <BorderSvgContainer width={width} height={height}>
               <defs>
                 <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
                   <animate
@@ -168,10 +179,12 @@ export const BorderBox9 = /*#__PURE__*/ withInstall(
                 fill={`url(#${gradientId})`}
                 mask={`url(#${maskId})`}
               />
-            </svg>
+            </BorderSvgContainer>
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },

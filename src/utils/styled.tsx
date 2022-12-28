@@ -4,12 +4,18 @@ import type { Component, FunctionalComponent } from 'vue';
 
 let prefix = 'dv-';
 
+// 用户可以自定义组件样式前缀 避免样式作用域冲突
 export function setClassPrefix(willSetPrefix: string) {
   prefix = willSetPrefix;
 }
 
 function getFullClassName(className: string, dot = true) {
   return `${dot ? '.' : ''}${prefix || ''}${className}`;
+}
+
+// 组件对外暴露的class 需要使用这个方法获取带有prefix的完整className
+export function getFullClassForBind(className: string) {
+  return getFullClassName(className, false);
 }
 
 function createStyle(style: TemplateStringsArray, className: string) {

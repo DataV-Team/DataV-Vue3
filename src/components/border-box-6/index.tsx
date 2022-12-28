@@ -3,12 +3,25 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 import type { BorderBoxCommonProps } from '../../utils/borderBox';
 
-import './index.less';
-
 const defaultColor = ['rgba(255, 255, 255, 0.35)', 'gray'];
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+
+  & > polyline {
+    fill: none;
+    stroke-width: 1;
+  }
+`('border-svg-container');
 
 export type BorderBox6Props = BorderBoxCommonProps;
 
@@ -27,8 +40,11 @@ export const BorderBox6 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <div class="dv-border-box-6" ref={domRef}>
-            <svg class="dv-border-svg-container" width={width} height={height}>
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-6')}
+            ref={(ref) => (domRef.value = ref.$el)}
+          >
+            <BorderSvgContainer width={width} height={height}>
               <polygon
                 fill={backgroundColor}
                 points={`
@@ -63,10 +79,12 @@ export const BorderBox6 = /*#__PURE__*/ withInstall(
                 stroke={mergedColor[0]}
                 points={`${width - 7}, ${height - 30} ${width - 7}, ${height - 80}`}
               />
-            </svg>
+            </BorderSvgContainer>
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },
