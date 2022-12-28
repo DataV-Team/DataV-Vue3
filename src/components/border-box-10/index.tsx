@@ -4,11 +4,15 @@ import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
 
+import type { BorderBoxCommonProps } from '../../utils/borderBox';
+
 import './index.less';
 
 const defaultColor = ['#1d48c4', '#d3e1f8'];
 
 const border = ['left-top', 'right-top', 'left-bottom', 'right-bottom'] as const;
+
+export type BorderBox10Props = BorderBoxCommonProps;
 
 export const BorderBox10 = /*#__PURE__*/ withInstall(
   defineComponent({
