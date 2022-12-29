@@ -4,10 +4,18 @@ import { useResize } from '../../hooks/useResize';
 import { useUuid } from '../../hooks/useUuid';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-
-import './index.less';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 const defaultColor = ['#235fa7', '#4fd2dd'];
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+`('border-svg-container');
 
 const borderBox8Props = () => ({
   ...createBorderBoxCommonProps(),
@@ -51,8 +59,11 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
             } L2.5, 2.5`;
 
         return (
-          <div class="dv-border-box-8" ref={domRef}>
-            <svg class="dv-border-svg-container" width={width} height={height}>
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-8')}
+            ref={(ref) => (domRef.value = ref.$el)}
+          >
+            <BorderSvgContainer width={width} height={height}>
               <defs>
                 <path id={path} d={pathD} fill="transparent" />
                 <radialGradient id={gradient} cx="50%" cy="50%" r="50%">
@@ -93,10 +104,12 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
                   repeatCount="indefinite"
                 />
               </use>
-            </svg>
+            </BorderSvgContainer>
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },

@@ -3,12 +3,20 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 import type { BorderBoxCommonProps } from '../../utils/borderBox';
 
-import './index.less';
-
 const defaultColor = ['#6586ec', '#2cf7fe'];
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+`('border-svg-container');
 
 export type BorderBox13Props = BorderBoxCommonProps;
 
@@ -27,8 +35,11 @@ export const BorderBox13 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <div class="dv-border-box-13" ref={domRef}>
-            <svg class="dv-border-svg-container" width={width} height={height}>
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-13')}
+            ref={(ref) => (domRef.value = ref.$el)}
+          >
+            <BorderSvgContainer width={width} height={height}>
               <path
                 fill={backgroundColor}
                 stroke={mergedColor[0]}
@@ -62,10 +73,12 @@ export const BorderBox13 = /*#__PURE__*/ withInstall(
                   height - 5
                 }`}
               />
-            </svg>
+            </BorderSvgContainer>
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },

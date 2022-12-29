@@ -7,5 +7,5 @@
     "resolveJsonModule": true
   },
   "include": ["./**/*.*", "./.dev/*.*"],
-  "exclude": ["node_modules", "scripts/dev/dev-env"]
+  "exclude": ["node_modules", "scripts/dev/dev-env", "es"]
 }

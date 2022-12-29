@@ -4,10 +4,38 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-
-import './index.less';
+import { getFullClassForBind, styled } from '../../utils/styled';
+import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 const defaultColor = ['rgba(255, 255, 255, 0.35)', 'rgba(255, 255, 255, 0.20)'];
+
+const BorderSvgContainer = styled.svg`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+
+  & > polyline {
+    fill: none;
+  }
+
+  &.reverse {
+    transform: rotate(180deg);
+  }
+
+  .stroke-width1 {
+    stroke-width: 1;
+  }
+
+  .stroke-width2 {
+    stroke-width: 2px;
+  }
+
+  .stroke-width5 {
+    stroke-width: 5px;
+  }
+`('border-svg-container');
 
 const borderBox5Props = () => ({
   ...createBorderBoxCommonProps(),
@@ -34,12 +62,11 @@ export const BorderBox5 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <div class="dv-border-box-5" ref={domRef}>
-            <svg
-              class={cx('dv-border-svg-container', { 'dv-reverse': reverse })}
-              width={width}
-              height={height}
-            >
+          <BorderBoxContainer
+            class={getFullClassForBind('border-box-5')}
+            ref={(ref) => (domRef.value = ref.$el)}
+          >
+            <BorderSvgContainer class={cx({ reverse })} width={width} height={height}>
               <polygon
                 fill={backgroundColor}
                 points={`
@@ -49,46 +76,48 @@ export const BorderBox5 = /*#__PURE__*/ withInstall(
               />
 
               <polyline
-                class="dv-bb5-line-1"
+                class="stroke-width1"
                 stroke={mergedColor[0]}
                 points={`8, 5 ${width - 5}, 5 ${width - 5}, ${height - 100}
                   ${width - 100}, ${height - 5} 8, ${height - 5} 8, 5`}
               />
 
               <polyline
-                class="dv-bb5-line-2"
+                class="stroke-width1"
                 stroke={mergedColor[1]}
                 points={`3, 5 ${width - 20}, 5 ${width - 20}, ${height - 60}
                   ${width - 74}, ${height - 5} 3, ${height - 5} 3, 5`}
               />
 
               <polyline
-                class="dv-bb5-line-3"
+                class="stroke-width5"
                 stroke={mergedColor[1]}
                 points={`50, 13 ${width - 35}, 13`}
               />
 
               <polyline
-                class="dv-bb5-line-4"
+                class="stroke-width2"
                 stroke={mergedColor[1]}
                 points={`15, 20 ${width - 35}, 20`}
               />
 
               <polyline
-                class="dv-bb5-line-5"
+                class="stroke-width2"
                 stroke={mergedColor[1]}
                 points={`15, ${height - 20} ${width - 110}, ${height - 20}`}
               />
 
               <polyline
-                class="dv-bb5-line-6"
+                class="stroke-width5"
                 stroke={mergedColor[1]}
                 points={`15, ${height - 13} ${width - 110}, ${height - 13}`}
               />
-            </svg>
+            </BorderSvgContainer>
 
-            <div class="border-box-content">{slots.default?.()}</div>
-          </div>
+            <BorderBoxContent>
+              <slot>{slots.default?.()}</slot>
+            </BorderBoxContent>
+          </BorderBoxContainer>
         );
       };
     },

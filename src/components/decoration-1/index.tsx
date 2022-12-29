@@ -3,11 +3,10 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { withInstall, mergeColor } from '../../utils/common';
 import { createColorProps } from '../../utils/decoration';
+import { styled } from '../../utils/styled';
 
 import type { Point } from '../../types/common';
 import type { CSSProperties } from 'vue';
-
-import './index.less';
 
 function calcPointsPosition({
   width,
@@ -50,6 +49,15 @@ const pointPositions = calcPointsPosition({
 const leftRectPosition = pointPositions[rowPoints * 2 - 1];
 const rightRectPosition = pointPositions[rowPoints * 2 - 3];
 
+const DecorationContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  svg {
+    transform-origin: left top;
+  }
+`('decoration-1');
+
 export type Decoration1Props = ReturnType<typeof createColorProps>;
 
 export const Decoration1 = /*#__PURE__*/ withInstall(
@@ -72,7 +80,7 @@ export const Decoration1 = /*#__PURE__*/ withInstall(
         };
 
         return (
-          <div class="dv-decoration-1" ref={domRef}>
+          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
             <svg width={defaultSvgWidth} height={defaultSvgHeight} style={svgStyle}>
               {pointPositions.map(([px, py], i) => {
                 const x = px - halfPointSideLength;
@@ -151,7 +159,7 @@ export const Decoration1 = /*#__PURE__*/ withInstall(
                 />
               </rect>
             </svg>
-          </div>
+          </DecorationContainer>
         );
       };
     },

@@ -1,7 +1,20 @@
 import { defineComponent } from 'vue';
 
-import './index.less';
 import { withInstall } from '../../utils/common';
+import { styled } from '../../utils/styled';
+
+const LoadingContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .loading-tip {
+    font-size: 15px;
+  }
+`('loading');
 
 export const Loading = /*#__PURE__*/ withInstall(
   defineComponent({
@@ -10,7 +23,7 @@ export const Loading = /*#__PURE__*/ withInstall(
     setup(_, { slots }) {
       return () => {
         return (
-          <div class="dv-loading">
+          <LoadingContainer>
             <svg width="50px" height="50px">
               <circle
                 cx="25"
@@ -64,7 +77,7 @@ export const Loading = /*#__PURE__*/ withInstall(
             </svg>
 
             <div class="loading-tip">{slots.default?.()}</div>
-          </div>
+          </LoadingContainer>
         );
       };
     },
