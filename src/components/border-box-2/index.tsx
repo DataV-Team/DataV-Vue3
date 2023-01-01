@@ -62,9 +62,7 @@ export const BorderBox2 = /*#__PURE__*/ withInstall(
               <circle fill={mergedColor[0]} cx="11" cy={height - 11} r="1" />
             </BorderSvgContainer>
 
-            <BorderBoxContent>
-              <slot>{slots.default?.()}</slot>
-            </BorderBoxContent>
+            <BorderBoxContent>{slots.default?.()}</BorderBoxContent>
           </BorderBoxContainer>
         );
       };

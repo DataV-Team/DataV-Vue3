@@ -76,9 +76,7 @@ export const BorderBox10 = /*#__PURE__*/ withInstall(
               );
             })}
 
-            <BorderBoxContent>
-              <slot>{slots.default?.()}</slot>
-            </BorderBoxContent>
+            <BorderBoxContent>{slots.default?.()}</BorderBoxContent>
           </BorderBoxContainer>
         );
       };
