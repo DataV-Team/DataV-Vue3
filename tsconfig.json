@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "baseUrl": "./",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["./**/*.*", "./.dev/*.*"],
+  "include": ["./**/*.*", "./.dev/*.*", "./docs/.vuepress/*.*"],
   "exclude": ["node_modules", "scripts/dev/dev-env", "es"]
 }

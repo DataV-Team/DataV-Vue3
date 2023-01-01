@@ -5,58 +5,62 @@ body,
   height: 100%;
   margin: 0px;
   padding: 0px;
+}
+
+#app {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  padding: 136px 32px;
+  box-sizing: border-box;
   overflow: hidden;
 }
 
-.welcome-box {
-  width: 80% !important;
-  height: 350px !important;
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  .border-box-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .logo {
+    height: 132px;
+  }
 
-    @keyframes logo {
-      0% {
-        transform-origin: 46% 48%;
-        transform: rotate(0deg);
-      }
+  .brand {
+    font-size: 76px;
+    font-weight: 900;
+    background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-      100% {
-        transform-origin: 46% 48%;
-        transform: rotate(360deg);
-      }
-    }
+  .brand-desc {
+    font-size: 76px;
+    font-weight: 900;
+    color: #213547;
+  }
 
-    .logo {
-      width: 100px;
-      height: 100px;
-      animation: logo 3s linear infinite;
-      transform: rotate(0deg);
-      margin-bottom: 30px;
-    }
+  .desc {
+    font-size: 22px;
+    line-height: 1.5;
+    color: rgba(60, 60, 60, 0.7);
+    margin-top: 24px;
+  }
 
-    .title {
-      font-size: 25px;
-      font-weight: bold;
-      color: #3eaf7c;
-      margin-bottom: 20px;
-    }
+  .dev-tip-container {
+    width: 500px;
+    height: 46px;
+    margin-top: 42px;
 
-    .desc {
-      font-size: 20px;
-      color: #646cff;
-
-      .path {
-        padding: 3px 5px;
-        border-radius: 3px;
-        border: 1px solid #3eaf7c;
-      }
+    .dv-border-box-content {
+      font-size: 16px;
+      color: #476582;
+      line-height: 44px;
+      text-align: center;
+      font-weight: 500;
     }
   }
 }

@@ -14,12 +14,12 @@
     "build:umd": "vite build --config scripts/build/vite.config.umd.ts",
     "check": "yarn lint && yarn lint:type && yarn lint:format",
     "lint": "eslint --fix --ext .ts,.tsx src",
-    "lint:type": "tsc --project ./tsconfig.json --noEmit",
+    "lint:type": "ts-node docs/.vuepress/init && tsc --project ./tsconfig.json --noEmit",
     "lint:format": "prettier --check \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.less\"",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.less\"",
     "test:run": "vitest run",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "ts-node docs/.vuepress/init && vuepress dev docs",
+    "docs:build": "yarn build:es && vuepress build docs"
   },
   "files": [
     "es",
@@ -50,6 +50,7 @@
     "glob": "^8.0.3",
     "husky": "^8.0.1",
     "less": "^4.1.3",
+    "ora": "5.4.1",
     "prettier": "^2.7.1",
     "ts-morph": "^17.0.1",
     "ts-node": "^10.9.1",

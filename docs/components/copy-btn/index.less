@@ -1,0 +1,38 @@
+.copy-btn-container {
+  display: flex;
+  justify-content: flex-end;
+
+  .copy-btn {
+    user-select: none;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #46bd87;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 86px;
+    font-size: 14px;
+    padding: 4px 0px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background-color: fade(#46bd87, 20);
+    }
+
+    &:active {
+      background-color: fade(#46bd87, 10);
+    }
+
+    > span {
+      display: inline-block;
+      width: 100%;
+      transition: all 0.3s;
+
+      &:first-child.coping {
+        margin-left: -100%;
+      }
+    }
+  }
+}
