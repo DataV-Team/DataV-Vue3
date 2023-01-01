@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-import { getFullClassForBind, styled } from '../../utils/styled';
+import { styled } from '../../utils/styled';
 import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 const defaultColor = ['rgba(255, 255, 255, 0.35)', 'rgba(255, 255, 255, 0.20)'];
@@ -54,7 +54,7 @@ export const BorderBox5 = /*#__PURE__*/ withInstall(
     props: borderBox5Props(),
 
     setup(props, { slots }) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { color, backgroundColor, reverse } = props;
@@ -62,10 +62,7 @@ export const BorderBox5 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <BorderBoxContainer
-            class={getFullClassForBind('border-box-5')}
-            ref={(ref) => (domRef.value = ref.$el)}
-          >
+          <BorderBoxContainer class={styled.getClassNameForBind('border-box-5')} ref={autoBindRef}>
             <BorderSvgContainer class={cx({ reverse })} width={width} height={height}>
               <polygon
                 fill={backgroundColor}

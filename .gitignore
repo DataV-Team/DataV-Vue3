@@ -1,4 +1,5 @@
 node_modules
+.npmrc
 
 .dev
 cjs
@@ -7,3 +8,4 @@ umd
 
 docs/.vuepress/.cache
 docs/.vuepress/.temp
+docs/.vuepress/dist

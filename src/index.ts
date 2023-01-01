@@ -1,4 +1,4 @@
-export { setClassPrefix } from './utils/styled';
+export { setClassNamePrefix } from './utils/styled';
 export * from './components/border-box-1';
 export * from './components/border-box-2';
 export * from './components/border-box-3';

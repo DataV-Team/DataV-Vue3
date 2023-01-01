@@ -40,7 +40,9 @@ export function compileStyledComponentsPlugin(styledPlaceholder: string) {
           return;
         }
 
-        const isStyledTemplate = node.getParentIf((parent) => parent.getChildAtIndex(0).getFullText().trim().startsWith('styled'));
+        const isStyledTemplate = node.getParentIf((parent) =>
+          parent.getChildAtIndex(0).getFullText().trim().startsWith('styled')
+        );
         if (!isStyledTemplate) {
           return;
         }
@@ -69,6 +71,7 @@ export function compileStyledComponentsPlugin(styledPlaceholder: string) {
 
       return {
         code: source.getFullText(),
+        map: null,
       };
     },
   };
