@@ -3,7 +3,7 @@ import { defineComponent } from 'vue';
 import { useResize } from '../../hooks/useResize';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-import { getFullClassForBind, styled } from '../../utils/styled';
+import { styled } from '../../utils/styled';
 import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 import type { BorderBoxCommonProps } from '../../utils/borderBox';
@@ -40,7 +40,7 @@ export const BorderBox7 = /*#__PURE__*/ withInstall(
     props: createBorderBoxCommonProps(),
 
     setup(props, { slots }) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { color, backgroundColor } = props;
@@ -49,8 +49,8 @@ export const BorderBox7 = /*#__PURE__*/ withInstall(
 
         return (
           <BorderBoxContainer
-            class={getFullClassForBind('border-box-7')}
-            ref={(ref) => (domRef.value = ref.$el)}
+            class={styled.getClassNameForBind('border-box-7')}
+            ref={autoBindRef}
             style={{
               boxShadow: `inset 0 0 40px ${mergedColor[0]}`,
               border: `1px solid ${mergedColor[0]}`,

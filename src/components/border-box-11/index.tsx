@@ -5,7 +5,7 @@ import { useResize } from '../../hooks/useResize';
 import { useUuid } from '../../hooks/useUuid';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-import { getFullClassForBind, styled } from '../../utils/styled';
+import { styled } from '../../utils/styled';
 import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 const defaultColor = ['#8aaafb', '#1f33a2'];
@@ -44,7 +44,7 @@ export const BorderBox11 = /*#__PURE__*/ withInstall(
     props: createBorderBox11Props(),
 
     setup(props, { slots }) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
       const uuid = useUuid();
 
       return () => {
@@ -54,10 +54,7 @@ export const BorderBox11 = /*#__PURE__*/ withInstall(
         const filterId = `border-box-11-filterId-${uuid}`;
 
         return (
-          <BorderBoxContainer
-            class={getFullClassForBind('border-box-11')}
-            ref={(ref) => (domRef.value = ref.$el)}
-          >
+          <BorderBoxContainer class={styled.getClassNameForBind('border-box-11')} ref={autoBindRef}>
             <BorderSvgContainer width={width} height={height}>
               <defs>
                 <filter id={filterId} height="150%" width="150%" x="-25%" y="-25%">

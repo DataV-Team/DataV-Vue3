@@ -4,7 +4,7 @@ import { useResize } from '../../hooks/useResize';
 import { useUuid } from '../../hooks/useUuid';
 import { createBorderBoxCommonProps, mergeColor } from '../../utils/borderBox';
 import { withInstall } from '../../utils/common';
-import { getFullClassForBind, styled } from '../../utils/styled';
+import { styled } from '../../utils/styled';
 import { BorderBoxContainer, BorderBoxContent } from '../styled/borderBox';
 
 const defaultColor = ['#235fa7', '#4fd2dd'];
@@ -38,7 +38,7 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
     props: borderBox8Props(),
 
     setup(props, { slots }) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
       const uuid = useUuid();
 
       return () => {
@@ -59,10 +59,7 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
             } L2.5, 2.5`;
 
         return (
-          <BorderBoxContainer
-            class={getFullClassForBind('border-box-8')}
-            ref={(ref) => (domRef.value = ref.$el)}
-          >
+          <BorderBoxContainer class={styled.getClassNameForBind('border-box-8')} ref={autoBindRef}>
             <BorderSvgContainer width={width} height={height}>
               <defs>
                 <path id={path} d={pathD} fill="transparent" />
