@@ -1,0 +1,62 @@
+name: release-test
+
+on:
+  push:
+    branches: ['test/**']
+  workflow_dispatch:
+
+jobs:
+  release-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18.1'
+          registry-url: https://registry.npmjs.org/
+      - run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_ACCESS_TOKEN  }}' > ${{ github.workspace }}/.npmrc
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
+
+      - name: Check
+        run: yarn run check
+
+      - name: Generate Test Version
+        run: yarn run version:test
+
+      - name: Build
+        run: yarn run build
+
+      - name: Publish
+        run: npm publish
+
+      - name: Read Version
+        id: version
+        uses: ashley-taylor/read-json-property-action@v1.0
+        with:
+          path: ./package.json
+          property: version
+
+      - name: Commit Test Version
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actor
+          message: 'chore: release test version v${{ steps.version.outputs.value }}'
+          push: true
