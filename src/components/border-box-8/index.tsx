@@ -103,9 +103,7 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
               </use>
             </BorderSvgContainer>
 
-            <BorderBoxContent>
-              <slot>{slots.default?.()}</slot>
-            </BorderBoxContent>
+            <BorderBoxContent>{slots.default?.()}</BorderBoxContent>
           </BorderBoxContainer>
         );
       };
