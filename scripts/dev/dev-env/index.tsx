@@ -1,21 +1,33 @@
-import { createApp } from 'vue';
+import { createApp, defineComponent } from 'vue';
 
-import LogoImg from '../assets/logo.png';
-import { BorderBox1 } from '../src';
+import Logo from '../assets/logo.png';
+import { BorderBox12 } from '../src';
 
 import './index.less';
 
-function WelcomeDevDataV() {
-  return (
-    <BorderBox1 class="welcome-box">
-      <img class="logo" src={LogoImg} alt="logo" />
+const WelcomeDevDataV = defineComponent({
+  setup() {
+    return () => {
+      return (
+        <div class="welcome-container">
+          <img class="logo" src={Logo} />
 
-      <div class="title">Welcome</div>
-      <div class="desc">
-        Modify this file for development <span class="path">DATAV-VUE3/.dev/index.tsx</span>
-      </div>
-    </BorderBox1>
-  );
-}
+          <div class="brand">@dataview/datav-vue3</div>
 
+          <div class="brand-desc">Vite + TypeScript + Vue3</div>
+
+          <div class="desc">Vue3 Large screen data display component library</div>
+
+          <BorderBox12
+            class="dev-tip-container"
+            color={['#647eff', '#42d392']}
+            backgroundColor="#f1f1f1"
+          >
+            Modify DATAV-VUE3/.dev/index.tsx for Development
+          </BorderBox12>
+        </div>
+      );
+    };
+  },
+});
 createApp(<WelcomeDevDataV />).mount('#app');

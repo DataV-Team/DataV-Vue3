@@ -2,6 +2,7 @@
 home: true
 title: Welcome
 heroImage: ./favicon.ico
+heroHeight: 132
 actions:
   - text: 快速开始
     link: /guide/

@@ -12,22 +12,21 @@ export default defineConfig({
     lib: {
       entry: ENTRY,
       formats: ['umd'],
+      name: 'DataV',
     },
     rollupOptions: {
       external: ['vue'],
 
-      output: [
-        {
-          dir: 'umd',
-          format: 'umd',
-          name: 'DataV',
-          entryFileNames: 'datav.umd.js',
-          sourcemap: true,
-          globals: {
-            vue: 'Vue',
-          },
+      output: {
+        dir: 'umd',
+        format: 'umd',
+        name: 'DataV',
+        entryFileNames: 'datav.umd.js',
+        sourcemap: true,
+        globals: {
+          vue: 'Vue',
         },
-      ],
+      },
     },
   },
   plugins: [
