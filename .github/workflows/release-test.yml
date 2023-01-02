@@ -45,7 +45,7 @@ jobs:
         run: yarn run build
 
       - name: Publish
-        run: npm publish
+        run: npm publish --tag test
 
       - name: Read Version
         id: version
