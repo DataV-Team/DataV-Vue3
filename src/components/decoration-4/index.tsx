@@ -80,7 +80,7 @@ export const Decoration4 = /*#__PURE__*/ withInstall(
     props: createDecoration4Props(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { width, height } = domSize;
@@ -100,7 +100,7 @@ export const Decoration4 = /*#__PURE__*/ withInstall(
         const polylinePoints = reverse ? `0, 2.5 ${width}, 2.5` : `2.5, 0 2.5, ${height}`;
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <DecorationContent class={cx(reverse ? 'reverse' : 'normal')} style={containerStyle}>
               <svg width={svgWidth} height={svgHeight}>
                 <polyline stroke={mergedColor[0]} points={polylinePoints} />

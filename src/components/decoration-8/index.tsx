@@ -29,7 +29,7 @@ export const Decoration8 = /*#__PURE__*/ withInstall(
     props: createDecoration8Props(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
       return () => {
         const { color, reverse } = props;
         const { width, height } = domSize;
@@ -43,7 +43,7 @@ export const Decoration8 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg width={width} height={height}>
               <polyline
                 stroke={mergedColor[0]}

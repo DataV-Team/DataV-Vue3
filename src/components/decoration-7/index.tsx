@@ -24,14 +24,14 @@ export const Decoration7 = /*#__PURE__*/ withInstall(
     props: createColorProps(),
 
     setup(props, { slots }) {
-      const { domRef } = useResize();
+      const { autoBindRef } = useResize();
 
       return () => {
         const { color } = props;
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg width="21px" height="20px">
               <polyline
                 stroke-width="4"
