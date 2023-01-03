@@ -76,7 +76,6 @@ function StyledComponents(classNamePrefix: string) {
 
       return (className: string): T => {
         const StyledComponentWithType = StyledComponent as FunctionalComponent<Props>;
-        const fullClassName = getFullClassName(className, false);
         const id = uniqueId('style');
 
         const StyledFC = /*#__PURE__*/ defineComponent<Props>({
@@ -98,6 +97,8 @@ function StyledComponents(classNamePrefix: string) {
                 removeStyle();
               }
             });
+
+            const fullClassName = getFullClassName(className, false);
 
             return () => (
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
