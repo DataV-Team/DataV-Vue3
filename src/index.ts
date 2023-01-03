@@ -80,4 +80,8 @@ export * from './components/decoration-5';
 export * from './components/decoration-6';
 export * from './components/decoration-7';
 export * from './components/decoration-8';
+export * from './components/decoration-9';
+export * from './components/decoration-10';
+export * from './components/decoration-11';
+export * from './components/decoration-12';
 export * from './components/loading';
