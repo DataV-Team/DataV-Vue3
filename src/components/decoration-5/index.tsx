@@ -69,7 +69,7 @@ export const Decoration5 = /*#__PURE__*/ withInstall(
     props: createDecoration5Props(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { width, height } = domSize;
@@ -80,7 +80,7 @@ export const Decoration5 = /*#__PURE__*/ withInstall(
         const { line1Sum, line2Sum, line1Point, line2Point } = calcSVGData(width, height);
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg width={width} height={height}>
               <polyline
                 fill="transparent"

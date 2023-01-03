@@ -67,7 +67,7 @@ export const Decoration1 = /*#__PURE__*/ withInstall(
     props: createColorProps(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { color } = props;
@@ -80,7 +80,7 @@ export const Decoration1 = /*#__PURE__*/ withInstall(
         };
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg width={defaultSvgWidth} height={defaultSvgHeight} style={svgStyle}>
               {pointPositions.map(([px, py], i) => {
                 const x = px - halfPointSideLength;

@@ -62,7 +62,7 @@ export const Decoration3 = /*#__PURE__*/ withInstall(
     props: createColorProps(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { width, height } = domSize;
@@ -71,7 +71,7 @@ export const Decoration3 = /*#__PURE__*/ withInstall(
         const mergedColor = mergeColor(defaultColor, color);
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg
               width={defaultSvgWidth}
               height={defaultSvgHeight}

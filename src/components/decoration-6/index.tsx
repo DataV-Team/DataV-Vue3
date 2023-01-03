@@ -82,7 +82,7 @@ export const Decoration6 = /*#__PURE__*/ withInstall(
     props: createColorProps(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { width, height } = domSize;
@@ -97,7 +97,7 @@ export const Decoration6 = /*#__PURE__*/ withInstall(
         const randomColor = () => mergedColor[Math.random() > 0.5 ? 0 : 1];
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg class="svg-origin" width={width} height={height} style={svgStyle}>
               {points.map(([x, y], i) => (
                 <rect

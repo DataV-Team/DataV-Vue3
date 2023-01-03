@@ -50,7 +50,7 @@ export const Decoration2 = /*#__PURE__*/ withInstall(
     props: createDecoration2Props(),
 
     setup(props) {
-      const { domRef, domSize } = useResize();
+      const { autoBindRef, domSize } = useResize();
 
       return () => {
         const { width, height } = domSize;
@@ -61,7 +61,7 @@ export const Decoration2 = /*#__PURE__*/ withInstall(
         const { x, y, width: svgWidth, height: svgHeight } = calcSVGData(reverse, width, height);
 
         return (
-          <DecorationContainer ref={(ref) => (domRef.value = ref.$el)}>
+          <DecorationContainer ref={autoBindRef}>
             <svg width={width} height={height}>
               <rect x={x} y={y} width={svgWidth} height={svgHeight} fill={mergedColor[0]}>
                 <animate
