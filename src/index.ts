@@ -12,6 +12,9 @@ import { BorderBox7 } from './components/border-box-7';
 import { BorderBox8 } from './components/border-box-8';
 import { BorderBox9 } from './components/border-box-9';
 import { Decoration1 } from './components/decoration-1';
+import { Decoration10 } from './components/decoration-10';
+import { Decoration11 } from './components/decoration-11';
+import { Decoration12 } from './components/decoration-12';
 import { Decoration2 } from './components/decoration-2';
 import { Decoration3 } from './components/decoration-3';
 import { Decoration4 } from './components/decoration-4';
@@ -19,6 +22,7 @@ import { Decoration5 } from './components/decoration-5';
 import { Decoration6 } from './components/decoration-6';
 import { Decoration7 } from './components/decoration-7';
 import { Decoration8 } from './components/decoration-8';
+import { Decoration9 } from './components/decoration-9';
 import { Loading } from './components/loading';
 import { setClassNamePrefix } from './utils/styled';
 
@@ -48,6 +52,10 @@ export default function DataV(app: App, { classNamePrefix }: { classNamePrefix?:
     Decoration6,
     Decoration7,
     Decoration8,
+    Decoration9,
+    Decoration10,
+    Decoration11,
+    Decoration12,
     Loading,
   ];
 

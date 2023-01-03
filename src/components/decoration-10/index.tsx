@@ -25,13 +25,15 @@ export const Decoration10 = /*#__PURE__*/ withInstall(
     setup(props) {
       const { autoBindRef, domSize } = useResize();
 
-      const animationId1 = `d10ani${useUuid().id}`;
-      const animationId2 = `d10ani${useUuid().id}`;
-      const animationId3 = `d10ani${useUuid().id}`;
-      const animationId4 = `d10ani${useUuid().id}`;
-      const animationId5 = `d10ani${useUuid().id}`;
-      const animationId6 = `d10ani${useUuid().id}`;
-      const animationId7 = `d10ani${useUuid().id}`;
+      const uuid = useUuid();
+
+      const animationId1 = `d10ani${uuid.id}1`;
+      const animationId2 = `d10ani${uuid.id}2`;
+      const animationId3 = `d10ani${uuid.id}3`;
+      const animationId4 = `d10ani${uuid.id}4`;
+      const animationId5 = `d10ani${uuid.id}5`;
+      const animationId6 = `d10ani${uuid.id}6`;
+      const animationId7 = `d10ani${uuid.id}7`;
 
       return () => {
         const { width, height } = domSize;
