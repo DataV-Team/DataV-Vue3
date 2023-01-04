@@ -1,6 +1,6 @@
 {
   "name": "@dataview/datav-vue3",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.0-test.1672847248522",
   "description": "Vue3 large screen data display component library",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
