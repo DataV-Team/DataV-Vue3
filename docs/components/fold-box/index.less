@@ -1,0 +1,36 @@
+.fold-box {
+  margin: 10px 0px;
+
+  .fold-btn {
+    user-select: none;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #46bd87;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px 0px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+      background-color: fade(#46bd87, 20);
+    }
+
+    &:active {
+      background-color: fade(#46bd87, 10);
+    }
+  }
+
+  .fold-container {
+    transition: all 0.5s;
+    height: auto;
+  }
+
+  .fold {
+    height: 0px;
+    overflow: hidden;
+  }
+}

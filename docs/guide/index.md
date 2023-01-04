@@ -38,7 +38,7 @@ Work In Progress
 
 ## 安装
 
-- **步骤 1**：在 Vue3 项目下进行组件库安装
+- **步骤 1**：在 Vue3 项目下进行组件库安装 [(如何创建 Vue3 项目？ → Vue 官网)](https://cn.vuejs.org/)
 
 ```sh
 cd vue3-project
@@ -71,3 +71,56 @@ pnpm install @dataview/datav-vue3
 
 :::
 ::::
+
+## 使用
+
+在引入 DataV 时，可以传入一个包含 `classNamePrefix` 属性的全局配置对象，
+`classNamePrefix` 用于配置组件库 class 前缀，默认为 `dv-`
+
+> 也可以使用组件库导出的 _setClassNamePrefix_ 方法来设置 class 前缀
+
+### 完整引入
+
+```ts :no-line-numbers
+import { createApp } from 'vue';
+import DataV, { setClassNamePrefix } from '@dataview/datav-vue3';
+import App from './App.vue';
+
+const app = createApp(App);
+app.use(DataV, { classNamePrefix: 'dv-' });
+
+// setClassNamePrefix('dv-')
+```
+
+### 按需引入
+
+```vue :no-line-numbers
+<script setup lang="ts">
+import { BorderBox1 } from '@dataview/datav-vue3';
+</script>
+
+<template>
+  <BorderBox1 class="container"> Content </BorderBox1>
+</template>
+
+<style>
+.container {
+  width: 500px;
+  height: 200px;
+}
+</style>
+```
+
+### UMD / CDN
+
+```html :no-line-numbers
+<script src="https://unpkg.com/@dataview/datav-vue3@latest/umd/datav.umd.js"></script>
+```
+
+这里我们使用了 [unpkg](https://unpkg.com/)，但你也可以使用任何提供 npm 包服务的 CDN，例如 [jsdelivr](https://www.jsdelivr.com/) 或 [cdnjs](https://cdnjs.com/)。当然，你也可以下载此文件并自行提供服务。
+
+<FoldBox title="查看 UMD 使用示例">
+
+@[code html:no-line-numbers](./umdExample.html)
+
+</FoldBox>
