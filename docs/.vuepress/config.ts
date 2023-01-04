@@ -12,8 +12,40 @@ export default defineUserConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   theme: defaultTheme({
+    navbar: [
+      {
+        text: 'Vue2 & React 版本',
+        children: [
+          {
+            text: 'Vue2版本',
+            link: 'http://datav.jiaminghi.com/',
+          },
+          {
+            text: 'React版本',
+            link: 'http://datav-react.jiaminghi.com/',
+          },
+        ],
+      },
+      {
+        text: 'Github',
+        link: 'https://github.com/DataV-Team/DataV-Vue3',
+      },
+      {
+        text: '相关链接',
+        children: [
+          {
+            text: 'Vue',
+            link: 'https://vuejs.org/',
+          },
+          {
+            text: 'Vite',
+            link: 'https://vitejs.dev/',
+          },
+        ],
+      },
+    ],
     sidebar: {
-      '/guide/': ['', 'borderBox'],
+      '/guide/': ['/guide/index.md/', '/guide/borderBox.md', '/guide/decoration.md/'],
     },
   }),
   bundler: viteBundler({

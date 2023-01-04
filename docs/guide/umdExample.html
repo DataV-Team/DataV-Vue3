@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/@dataview/datav-vue3@latest/umd/datav.umd.js"></script>
+    <title>DataV</title>
+    <style>
+      html, body, #app {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #app {
+        background-color: #282c34;
+      }
+
+      .dv-border-box-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      }
+
+      .welcome {
+        font-size: 76px;
+        font-weight: 900;
+        background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+  <body></body>
+
+  <div id="app">
+    <border-box-1> 
+      <span class="welcome">@dataview/datav-vue3</span>
+    </BorderBox1>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+    const { BorderBox1 } = DataV;
+
+    const App = createApp();
+    App.component('BorderBox1', BorderBox1);
+    App.mount('#app');
+  </script>
+</html>

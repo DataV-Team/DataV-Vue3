@@ -8,5 +8,5 @@
     "resolveJsonModule": true
   },
   "include": ["./**/*.*", "./.dev/*.*", "./docs/.vuepress/*.*"],
-  "exclude": ["node_modules", "scripts/dev/dev-env", "es"]
+  "exclude": ["node_modules", "scripts/dev/dev-env", "docs/guide/refreshLayoutSizeDemo.tsx", "es"]
 }

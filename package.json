@@ -1,7 +1,7 @@
 {
   "name": "@dataview/datav-vue3",
   "version": "0.0.0-alpha.0",
-  "description": "Vue3 Large screen data display component library",
+  "description": "Vue3 large screen data display component library",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
@@ -30,8 +30,8 @@
   "keywords": [
     "datav"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "DataV-Team",
+  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-conventional": "17.0.2",

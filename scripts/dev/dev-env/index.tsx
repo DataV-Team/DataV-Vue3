@@ -16,7 +16,7 @@ const WelcomeDevDataV = defineComponent({
 
           <div class="brand-desc">Vite + TypeScript + Vue3</div>
 
-          <div class="desc">Vue3 Large screen data display component library</div>
+          <div class="desc">Vue3 large screen data display component library</div>
 
           <BorderBox12
             class="dev-tip-container"
