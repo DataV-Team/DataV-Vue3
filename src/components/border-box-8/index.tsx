@@ -19,7 +19,7 @@ const BorderSvgContainer = styled.svg`
 
 const borderBox8Props = () => ({
   ...createBorderBoxCommonProps(),
-  dur: {
+  duration: {
     type: Number,
     default: 3,
   },
@@ -45,7 +45,7 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
       const uuid = useUuid();
 
       return () => {
-        const { color, backgroundColor, dur, reverse } = props;
+        const { color, backgroundColor, duration, reverse } = props;
         const { width, height } = domSize;
         const mergedColor = mergeColor(defaultColor, color);
 
@@ -74,7 +74,7 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
                 <mask id={mask}>
                   <circle cx="0" cy="0" r="150" fill={`url(#${gradient})`}>
                     <animateMotion
-                      dur={`${dur}s`}
+                      dur={`${duration}s`}
                       path={pathD}
                       rotate="auto"
                       repeatCount="indefinite"
@@ -100,7 +100,7 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
                   attributeName="stroke-dasharray"
                   from={`0, ${length}`}
                   to={`${length}, 0`}
-                  dur={`${dur}s`}
+                  dur={`${duration}s`}
                   repeatCount="indefinite"
                 />
               </use>
