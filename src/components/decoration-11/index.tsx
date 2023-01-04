@@ -34,8 +34,10 @@ export const Decoration11 = /*#__PURE__*/ withInstall(
 
     props: createColorProps(),
 
-    setup(props, { slots }) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { slots, expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       return () => {
         const { width, height } = domSize;

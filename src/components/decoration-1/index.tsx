@@ -66,8 +66,10 @@ export const Decoration1 = /*#__PURE__*/ withInstall(
 
     props: createColorProps(),
 
-    setup(props) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       return () => {
         const { color } = props;

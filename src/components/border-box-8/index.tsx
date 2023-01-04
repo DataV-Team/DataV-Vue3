@@ -37,8 +37,11 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
 
     props: borderBox8Props(),
 
-    setup(props, { slots }) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { slots, expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
+
       const uuid = useUuid();
 
       return () => {

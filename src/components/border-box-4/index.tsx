@@ -50,8 +50,10 @@ export const BorderBox4 = /*#__PURE__*/ withInstall(
 
     props: borderBox4Props(),
 
-    setup(props, { slots }) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { slots, expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       return () => {
         const { color, backgroundColor, reverse } = props;

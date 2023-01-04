@@ -135,8 +135,10 @@ export const Decoration12 = /*#__PURE__*/ withInstall(
 
     props: createDecoration12Props(),
 
-    setup(props, { slots }) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { slots, expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       const uuid = useUuid();
 

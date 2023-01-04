@@ -5,6 +5,12 @@ import { withPrefix } from '../utils/logger';
 
 import type { ComponentPublicInstance } from 'vue';
 
+export type RefreshLayoutSize = () => void;
+
+export interface ExposeWithRefreshLayoutSize {
+  refreshLayoutSize: RefreshLayoutSize;
+}
+
 const logger = withPrefix('useResize');
 
 function observerDomResize(dom: HTMLElement, callback: () => void) {
@@ -53,7 +59,7 @@ export function useResize() {
     height: 0,
   });
 
-  const handleRomSizeChange = () => {
+  const handleRomSizeChange: RefreshLayoutSize = () => {
     updateDomSize(domRef.value, domSize);
   };
 
@@ -96,8 +102,8 @@ export function useResize() {
    * 可以手动给domRef赋值 或使用autoBindRef来绑定DomRef
    */
   return {
-    domRef,
     domSize,
     autoBindRef,
+    refreshLayoutSize: handleRomSizeChange,
   };
 }

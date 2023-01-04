@@ -26,8 +26,10 @@ export const BorderBox13 = /*#__PURE__*/ withInstall(
 
     props: createBorderBoxCommonProps(),
 
-    setup(props, { slots }) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { slots, expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       return () => {
         const { color, backgroundColor } = props;

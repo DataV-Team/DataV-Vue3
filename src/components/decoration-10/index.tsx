@@ -22,8 +22,10 @@ export const Decoration10 = /*#__PURE__*/ withInstall(
 
     props: createColorProps(),
 
-    setup(props) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       const uuid = useUuid();
 

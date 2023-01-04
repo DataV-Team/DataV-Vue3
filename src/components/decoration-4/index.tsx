@@ -79,8 +79,10 @@ export const Decoration4 = /*#__PURE__*/ withInstall(
 
     props: createDecoration4Props(),
 
-    setup(props) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       return () => {
         const { width, height } = domSize;
