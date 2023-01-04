@@ -93,3 +93,4 @@ export * from './components/decoration-10';
 export * from './components/decoration-11';
 export * from './components/decoration-12';
 export * from './components/loading';
+export type { RefreshLayoutSize, ExposeWithRefreshLayoutSize } from './hooks/useResize';

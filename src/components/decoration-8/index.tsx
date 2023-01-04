@@ -28,8 +28,11 @@ export const Decoration8 = /*#__PURE__*/ withInstall(
 
     props: createDecoration8Props(),
 
-    setup(props) {
-      const { autoBindRef, domSize } = useResize();
+    setup(props, { expose }) {
+      const { autoBindRef, refreshLayoutSize, domSize } = useResize();
+
+      expose({ refreshLayoutSize });
+
       return () => {
         const { color, reverse } = props;
         const { width, height } = domSize;

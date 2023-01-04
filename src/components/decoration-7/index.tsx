@@ -23,8 +23,10 @@ export const Decoration7 = /*#__PURE__*/ withInstall(
 
     props: createColorProps(),
 
-    setup(props, { slots }) {
-      const { autoBindRef } = useResize();
+    setup(props, { slots, expose }) {
+      const { autoBindRef, refreshLayoutSize } = useResize();
+
+      expose({ refreshLayoutSize });
 
       return () => {
         const { color } = props;
