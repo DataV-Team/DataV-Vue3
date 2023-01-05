@@ -49,9 +49,9 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
         const { width, height } = domSize;
         const mergedColor = mergeColor(defaultColor, color);
 
-        const path = `border-box-8-path-${uuid.id}`;
-        const gradient = `border-box-8-gradient-${uuid.id}`;
-        const mask = `border-box-8-mask-${uuid.id}`;
+        const pathId = `border-box-8-path-${uuid.id}`;
+        const gradientId = `border-box-8-gradient-${uuid.id}`;
+        const maskId = `border-box-8-mask-${uuid.id}`;
 
         const pathD = reverse
           ? `M 2.5, 2.5 L 2.5, ${height - 2.5} L ${width - 2.5}, ${height - 2.5} L ${
@@ -65,14 +65,14 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
           <BorderBoxContainer class={styled.getClassNameForBind('border-box-8')} ref={autoBindRef}>
             <BorderSvgContainer width={width} height={height}>
               <defs>
-                <path id={path} d={pathD} fill="transparent" />
-                <radialGradient id={gradient} cx="50%" cy="50%" r="50%">
+                <path id={pathId} d={pathD} fill="transparent" />
+                <radialGradient id={gradientId} cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stop-color="#fff" stop-opacity="1" />
                   <stop offset="100%" stop-color="#fff" stop-opacity="0" />
                 </radialGradient>
 
-                <mask id={mask}>
-                  <circle cx="0" cy="0" r="150" fill={`url(#${gradient})`}>
+                <mask id={maskId}>
+                  <circle cx="0" cy="0" r="150" fill={`url(#${gradientId})`}>
                     <animateMotion
                       dur={`${duration}s`}
                       path={pathD}
@@ -88,13 +88,13 @@ export const BorderBox8 = /*#__PURE__*/ withInstall(
                 points={`5, 5 ${width - 5}, 5 ${width - 5} ${height - 5} 5, ${height - 5}`}
               />
 
-              <use stroke={mergedColor[0]} stroke-width="1" xlinkHref={`#${path}`} />
+              <use stroke={mergedColor[0]} stroke-width="1" xlinkHref={`#${pathId}`} />
 
               <use
                 stroke={mergedColor[1]}
                 stroke-width="3"
-                xlinkHref={`#${path}`}
-                mask={`url(#${mask})`}
+                xlinkHref={`#${pathId}`}
+                mask={`url(#${maskId})`}
               >
                 <animate
                   attributeName="stroke-dasharray"
