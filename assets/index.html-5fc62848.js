@@ -1,0 +1,1 @@
+import{_ as n,M as t,p as o,q as c,N as r,R as e,t as s}from"./framework-7e1a102e.js";const d={},_=e("h1",{id:"dev-panel",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#dev-panel","aria-hidden":"true"},"#"),s(" DEV PANEL")],-1);function l(i,h){const a=t("DevPanel");return o(),c("div",null,[_,r(a)])}const f=n(d,[["render",l],["__file","index.html.vue"]]);export{f as default};
