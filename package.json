@@ -3,7 +3,7 @@
   "version": "0.0.0-alpha.0",
   "description": "Vue3 large screen data display component library",
   "main": "./cjs/index.js",
-  "module": "./es/index.js",
+  "module": "./es/index.mjs",
   "types": "./es/index.d.ts",
   "scripts": {
     "prepare": "husky install",
