@@ -2,4 +2,4 @@
 
 WIP DOCS: https://datav-vue3.jiaminghi.com
 
-[如何贡献代码](./contribute.md)
+[如何贡献代码](./CONTRIBUTION.md)
